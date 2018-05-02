@@ -1,17 +1,29 @@
-# android-videoZ
-基于MediaRecorder的视频录制.
+package camerplugin.zsoftware.com.cameraplugin;
 
-## 功能
-* 支持开始暂停(android<24)
+import android.Manifest;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
+import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.Event;
+import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
 
+import java.util.List;
 
-## 集成
-
-需要引入 权限框架 来支撑6.0以上的动态授权
-
-compile 'pub.devrel:easypermissions:1.1.3'
-```java
+import camerplugin.zsoftware.com.videoz.SmallVideoActivity;
+import camerplugin.zsoftware.com.videoz.entry.VideoConfig;
+import camerplugin.zsoftware.com.videoz.entry.VideoResult;
+import pub.devrel.easypermissions.EasyPermissions;
 
 @ContentView(R.layout.activity_main)
 public class MainActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
@@ -104,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         }
     }
 
-    // 预览
+
     private void startPlayer(VideoResult videoResult) {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);
@@ -119,4 +131,3 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         startActivity(intent);
     }
 }
-```
